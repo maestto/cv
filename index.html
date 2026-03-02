@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Максим Черненко — CV</title>
+  <style>
+    :root {
+      --text-primary: #111;
+      --text-secondary: #555;
+      --accent: #2563eb;
+      --accent-soft: #e8efff;
+      --background: #ffffff;
+      --surface: #ffffff;
+      --line: #e6ebf2;
+      --line-strong: #d8e1ee;
+      --chip-bg: #f8fafc;
+      --chip-border: #e2e8f0;
+      --shadow-lg: 0 2px 8px rgba(17, 17, 17, 0.04);
+      --shadow-sm: 0 1px 3px rgba(17, 17, 17, 0.05);
+      --radius-xl: 14px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--text-primary);
+      background: var(--background);
+      font-family: Inter, "SF Pro Text", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.45;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "cv11" 1, "ss01" 1;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 30px 16px;
+      background: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .cv {
+      width: min(100%, 900px);
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 36px 40px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin: 0;
+      color: #5f6879;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: none;
+    }
+
+    .name {
+      margin: 8px 0 0;
+      font-size: clamp(2rem, 3.5vw, 2.5rem);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+    }
+
+    .role {
+      margin: 10px 0 0;
+      color: #2d2d2d;
+      font-size: 1.04rem;
+      font-weight: 560;
+      letter-spacing: -0.01em;
+    }
+
+    .meta {
+      margin: 6px 0 0;
+      color: var(--text-secondary);
+      font-size: 0.91rem;
+    }
+
+    .header-right {
+      display: grid;
+      gap: 12px;
+      justify-items: end;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px;
+      background: #fff;
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.75rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-btn.is-active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .contacts {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      min-width: 260px;
+    }
+
+    .contacts li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    .contact-label {
+      color: #6d7685;
+      font-size: 0.74rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .contact-value {
+      color: #1d2433;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .section {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 152px minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .section-title {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #5f6879;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .section-title svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.8;
+      flex-shrink: 0;
+    }
+
+    .summary {
+      margin: 0;
+      color: #2a3344;
+      font-size: 0.97rem;
+      max-width: 74ch;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .skill-block {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      padding: 10px 12px;
+      transition: border-color 0.2s ease;
+    }
+
+    .skill-title {
+      margin: 0 0 8px;
+      color: #545e71;
+      font-size: 0.82rem;
+      font-weight: 640;
+      letter-spacing: 0.01em;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--chip-border);
+      background: var(--chip-bg);
+      color: #1f3e8a;
+      font-size: 0.81rem;
+      line-height: 1;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .experience-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      padding: 12px 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .experience-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: start;
+      padding-left: 0;
+    }
+
+    .job-title {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.23;
+      letter-spacing: -0.01em;
+    }
+
+    .job-company {
+      margin-top: 3px;
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 640;
+      letter-spacing: 0.01em;
+    }
+
+    .job-date {
+      margin: 0;
+      color: #5f6879;
+      font-size: 0.79rem;
+      font-weight: 560;
+      white-space: nowrap;
+    }
+
+    .job-summary {
+      margin: 8px 0 0;
+      padding-left: 0;
+      color: #3d4657;
+      font-size: 0.88rem;
+    }
+
+    .experience-item ul {
+      margin: 8px 0 0;
+      padding: 0 0 0 28px;
+      color: #1c2330;
+      font-size: 0.86rem;
+    }
+
+    .experience-item li + li {
+      margin-top: 4px;
+    }
+
+    .education-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .edu-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      padding: 11px 13px;
+      transition: border-color 0.2s ease;
+    }
+
+    .edu-name {
+      margin: 0;
+      font-size: 0.94rem;
+      line-height: 1.28;
+      letter-spacing: -0.008em;
+    }
+
+    .edu-meta {
+      margin: 4px 0 0;
+      color: #4c5669;
+      font-size: 0.86rem;
+    }
+
+    .language-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .language-item {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 11px;
+      background: #fff;
+      color: #3c4658;
+      font-size: 0.84rem;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    @media (hover: hover) {
+      .contact-value:hover {
+        color: var(--accent);
+      }
+
+      .chip:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        color: #334155;
+      }
+
+      .skill-block:hover,
+      .experience-item:hover,
+      .edu-item:hover {
+        border-color: #cbd5e1;
+      }
+
+      .language-item:hover {
+        border-color: #cbd5e1;
+        color: #334155;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .cv {
+        padding: 26px 20px 22px;
+        border-radius: 18px;
+      }
+
+      .header {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .header-right {
+        justify-items: start;
+      }
+
+      .contacts {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .contacts li {
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .contact-value {
+        text-align: left;
+      }
+
+      .section {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-head {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .job-date {
+        white-space: normal;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 9mm 10mm;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      .cv {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        background: #fff;
+      }
+
+      .lang-switch {
+        display: none;
+      }
+
+      .section {
+        margin-top: 11px;
+        padding-top: 9px;
+      }
+
+      .summary,
+      .job-summary,
+      .experience-item ul,
+      .edu-meta,
+      .contacts {
+        font-size: 0.8rem;
+      }
+
+      .job-title,
+      .edu-name,
+      .name {
+        letter-spacing: -0.015em;
+      }
+
+      .chip,
+      .language-item {
+        font-size: 0.73rem;
+        padding: 4px 8px;
+      }
+
+      .experience-item,
+      .skill-block,
+      .edu-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="cv" id="cv">
+    <header class="header">
+      <div>
+        <p class="kicker" data-i18n data-ru="Резюме" data-en="Resume">Резюме</p>
+        <h1 class="name">Максим Черненко</h1>
+        <p class="role" data-i18n data-ru="Разработчик (бэкенд / веб)" data-en="Developer (Backend / Web)">Разработчик (бэкенд / веб)</p>
+        <p class="meta" data-i18n data-ru="21 год" data-en="21 years old">21 год</p>
+      </div>
+
+      <div class="header-right">
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button class="lang-btn is-active" type="button" data-lang="ru" aria-pressed="true">RU</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <ul class="contacts">
+          <li>
+            <span class="contact-label" data-i18n data-ru="Телеграм" data-en="Telegram">Телеграм</span>
+            <a class="contact-value" href="https://t.me/maestto" target="_blank" rel="noreferrer noopener">@maestto</a>
+          </li>
+          <li>
+            <span class="contact-label" data-i18n data-ru="Эл. почта" data-en="Email">Эл. почта</span>
+            <a class="contact-value" href="mailto:chernenkomaksimigorevich@gmail.com">chernenkomaksimigorevich@gmail.com</a>
+          </li>
+          <li>
+            <span class="contact-label">GitHub</span>
+            <a class="contact-value" href="https://github.com/maestto" target="_blank" rel="noreferrer noopener">github.com/maestto</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="summary-heading">
+      <h2 class="section-title" id="summary-heading">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12M6 12h12M6 16h8"></path></svg>
+        <span data-i18n data-ru="О себе" data-en="About">О себе</span>
+      </h2>
+      <p class="summary" data-i18n
+        data-ru="Бэкенд- и веб-разработчик. Пишу сервисы на Python и JavaScript. Работаю с микросервисами, контейнеризацией, API, развёртыванием и мониторингом."
+        data-en="Backend and web developer. I build services in Python and JavaScript. I work with microservices, containerization, APIs, deployment, and monitoring.">
+        Бэкенд- и веб-разработчик. Пишу сервисы на Python и JavaScript. Работаю с микросервисами, контейнеризацией, API, развёртыванием и мониторингом.
+      </p>
+    </section>
+
+    <section class="section" aria-labelledby="skills-heading">
+      <h2 class="section-title" id="skills-heading">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"></path></svg>
+        <span data-i18n data-ru="Навыки" data-en="Skills">Навыки</span>
+      </h2>
+
+      <div class="skills-grid">
+        <article class="skill-block">
+          <h3 class="skill-title" data-i18n data-ru="Языки программирования" data-en="Languages">Языки программирования</h3>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">JavaScript</span>
+          </div>
+        </article>
+
+        <article class="skill-block">
+          <h3 class="skill-title" data-i18n data-ru="Бэкенд" data-en="Backend">Бэкенд</h3>
+          <div class="chips">
+            <span class="chip">FastAPI</span>
+            <span class="chip">Django</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">Vendure</span>
+          </div>
+        </article>
+
+        <article class="skill-block">
+          <h3 class="skill-title" data-i18n data-ru="Фронтенд" data-en="Frontend">Фронтенд</h3>
+          <div class="chips">
+            <span class="chip">React</span>
+            <span class="chip">Gatsby</span>
+            <span class="chip">SASS</span>
+          </div>
+        </article>
+
+        <article class="skill-block">
+          <h3 class="skill-title" data-i18n data-ru="Инфраструктура и DevOps" data-en="DevOps / Infrastructure">Инфраструктура и DevOps</h3>
+          <div class="chips">
+            <span class="chip">Docker</span>
+            <span class="chip">Docker Compose</span>
+            <span class="chip">GitLab CI</span>
+            <span class="chip">GitHub Actions</span>
+            <span class="chip">Linux</span>
+          </div>
+        </article>
+
+        <article class="skill-block">
+          <h3 class="skill-title" data-i18n data-ru="Мониторинг" data-en="Monitoring">Мониторинг</h3>
+          <div class="chips">
+            <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
+          </div>
+        </article>
+
+        <article class="skill-block">
+          <h3 class="skill-title" data-i18n data-ru="Базы данных" data-en="Databases">Базы данных</h3>
+          <div class="chips">
+            <span class="chip">PostgreSQL</span>
+          </div>
+        </article>
+
+        <article class="skill-block">
+          <h3 class="skill-title" data-i18n data-ru="Прочее" data-en="Other">Прочее</h3>
+          <div class="chips">
+            <span class="chip">REST API</span>
+            <span class="chip">WebSockets</span>
+            <span class="chip">NATS</span>
+            <span class="chip">GraphQL</span>
+            <span class="chip">Git</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="experience-heading">
+      <h2 class="section-title" id="experience-heading">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 9h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path></svg>
+        <span data-i18n data-ru="Опыт" data-en="Experience">Опыт</span>
+      </h2>
+
+      <div class="experience-list">
+        <article class="experience-item">
+          <div class="experience-head">
+            <div>
+              <h3 class="job-title" data-i18n data-ru="Разработчик (бэкенд)" data-en="Backend-Focused Developer">Разработчик (бэкенд)</h3>
+              <p class="job-company" data-i18n data-ru="Autobrief (стартап)" data-en="Autobrief (startup)">Autobrief (стартап)</p>
+            </div>
+            <p class="job-date" data-i18n data-ru="11.2025 — настоящее время" data-en="11/2025 — Present">11.2025 — настоящее время</p>
+          </div>
+          <p class="job-summary" data-i18n
+            data-ru="Делаю серверную часть платформы для командных созвонов с ИИ: сервисы, интеграции и отправку задач во внешние системы."
+            data-en="I build the backend of an AI collaboration platform: services, integrations, and task delivery to external systems.">
+            Делаю серверную часть платформы для командных созвонов с ИИ: сервисы, интеграции и отправку задач во внешние системы.
+          </p>
+          <ul>
+            <li data-i18n data-ru="Писал сервисы на FastAPI и поддерживал микросервисную архитектуру." data-en="Built FastAPI services and supported microservice architecture.">Писал сервисы на FastAPI и поддерживал микросервисную архитектуру.</li>
+            <li data-i18n data-ru="Сделал сервис уведомлений: WebSocket-доставка и межсервисный обмен через NATS." data-en="Built a notification service with WebSocket delivery and NATS for inter-service messaging.">Сделал сервис уведомлений: WebSocket-доставка и межсервисный обмен через NATS.</li>
+            <li data-i18n data-ru="Настроил Docker/Docker Compose, CI/CD в GitLab CI и выкладку на тестовый стенд; подключил метрики в Prometheus и Grafana." data-en="Set up Docker/Docker Compose, GitLab CI/CD, test deployment, and metrics in Prometheus/Grafana.">Настроил Docker/Docker Compose, CI/CD в GitLab CI и выкладку на тестовый стенд; подключил метрики в Prometheus и Grafana.</li>
+            <li data-i18n data-ru="Реализовал интеграции и отправку задач в Atlassian (Jira), Trello, Яндекс Трекер, amoCRM, Bitrix24 и другие системы." data-en="Built integrations and task delivery to Atlassian (Jira), Trello, Yandex Tracker, amoCRM, Bitrix24, and other systems.">Реализовал интеграции и отправку задач в Atlassian (Jira), Trello, Яндекс Трекер, amoCRM, Bitrix24 и другие системы.</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-head">
+            <div>
+              <h3 class="job-title" data-i18n data-ru="Разработчик (бэкенд)" data-en="Backend-Focused Developer">Разработчик (бэкенд)</h3>
+              <p class="job-company" data-i18n data-ru="Стартап-маркетплейс домашней выпечки" data-en="Startup marketplace for home bakery">Стартап-маркетплейс домашней выпечки</p>
+            </div>
+            <p class="job-date" data-i18n data-ru="11.2025 — 02.2026" data-en="11/2025 — 02/2026">11.2025 — 02.2026</p>
+          </div>
+          <p class="job-summary" data-i18n data-ru="Делал серверную часть платформы объявлений для продажи домашней выпечки." data-en="Worked on the backend of a marketplace for home bakery sales.">Делал серверную часть платформы объявлений для продажи домашней выпечки.</p>
+          <ul>
+            <li data-i18n data-ru="Писал серверную логику на Vendure и работал с API платформы." data-en="Wrote backend logic in Vendure and worked with platform APIs.">Писал серверную логику на Vendure и работал с API платформы.</li>
+            <li data-i18n data-ru="Дорабатывал функциональность и поддерживал серверную часть приложения." data-en="Added features and maintained backend components.">Дорабатывал функциональность и поддерживал серверную часть приложения.</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-head">
+            <div>
+              <h3 class="job-title" data-i18n data-ru="Разработчик" data-en="Developer">Разработчик</h3>
+              <p class="job-company" data-i18n data-ru="ИКТИБ ЮФУ" data-en="ICTIS SFedU">ИКТИБ ЮФУ</p>
+            </div>
+            <p class="job-date" data-i18n data-ru="06.2024 — 11.2024" data-en="06/2024 — 11/2024">06.2024 — 11.2024</p>
+          </div>
+          <p class="job-summary" data-i18n data-ru="Разрабатывал сервисы в научном проекте РНФ по кибербезопасности критической инфраструктуры." data-en="Worked on services in an RSF research project on cybersecurity for critical infrastructure.">Разрабатывал сервисы в научном проекте РНФ по кибербезопасности критической инфраструктуры.</p>
+          <ul>
+            <li data-i18n data-ru="Писал серверную часть на Python (Django) и сервис импорта данных." data-en="Wrote backend components in Python (Django), including a data import service.">Писал серверную часть на Python (Django) и сервис импорта данных.</li>
+            <li data-i18n data-ru="Писал unit-тесты и увеличивал покрытие." data-en="Wrote unit tests and increased test coverage.">Писал unit-тесты и увеличивал покрытие.</li>
+            <li data-i18n data-ru="Контейнеризировал сервисы в Docker и помогал с развёртыванием фронтенда." data-en="Containerized services in Docker and helped with frontend deployment.">Контейнеризировал сервисы в Docker и помогал с развёртыванием фронтенда.</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-head">
+            <div>
+              <h3 class="job-title" data-i18n data-ru="Разработчик" data-en="Developer">Разработчик</h3>
+              <p class="job-company">Freelance</p>
+            </div>
+            <p class="job-date" data-i18n data-ru="01.2024 — 02.2024" data-en="01/2024 — 02/2024">01.2024 — 02.2024</p>
+          </div>
+          <p class="job-summary" data-i18n data-ru="Сделал Telegram-бота для автоматизации услуг компьютерного клуба." data-en="Built a Telegram bot to automate services for a computer club.">Сделал Telegram-бота для автоматизации услуг компьютерного клуба.</p>
+          <ul>
+            <li data-i18n data-ru="Написал бота на Node.js (Telegraf.js) и интегрировал с Gizmo API." data-en="Wrote the bot in Node.js (Telegraf.js) and integrated it with Gizmo API.">Написал бота на Node.js (Telegraf.js) и интегрировал с Gizmo API.</li>
+            <li data-i18n data-ru="Собрал требования, подготовил ТЗ и автоматизировал часть клиентских операций." data-en="Collected requirements, wrote a spec, and automated part of customer workflows.">Собрал требования, подготовил ТЗ и автоматизировал часть клиентских операций.</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-head">
+            <div>
+              <h3 class="job-title" data-i18n data-ru="Фронтенд-разработчик (координация команды)" data-en="Frontend Developer (Team Coordination)">Фронтенд-разработчик (координация команды)</h3>
+              <p class="job-company" data-i18n data-ru="Театральная студия «Люди»" data-en="Theatre Studio “Lyudi”">Театральная студия «Люди»</p>
+            </div>
+            <p class="job-date" data-i18n data-ru="04.2023 — 08.2023" data-en="04/2023 — 08/2023">04.2023 — 08.2023</p>
+          </div>
+          <p class="job-summary" data-i18n data-ru="Делал сайт студии и координировал небольшую команду разработки." data-en="Built the studio website and coordinated a small dev team.">Делал сайт студии и координировал небольшую команду разработки.</p>
+          <ul>
+            <li data-i18n data-ru="Сделал фронтенд на React (Gatsby), работал с GraphQL и SASS." data-en="Built frontend in React (Gatsby), used GraphQL and SASS.">Сделал фронтенд на React (Gatsby), работал с GraphQL и SASS.</li>
+            <li data-i18n data-ru="Выложил проект в Yandex Cloud, общался с заказчиком и собирал требования." data-en="Deployed to Yandex Cloud, talked with the client, and gathered requirements.">Выложил проект в Yandex Cloud, общался с заказчиком и собирал требования.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="education-heading">
+      <h2 class="section-title" id="education-heading">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8 12 4l9 4-9 4-9-4zm3 3v4l6 3 6-3v-4"></path></svg>
+        <span data-i18n data-ru="Образование" data-en="Education">Образование</span>
+      </h2>
+
+      <div class="education-list">
+        <article class="edu-item">
+          <h3 class="edu-name" data-i18n data-ru="Южный федеральный университет (ЮФУ)" data-en="Southern Federal University (SFedU)">Южный федеральный университет (ЮФУ)</h3>
+          <p class="edu-meta" data-i18n data-ru="Информационная безопасность, бакалавриат" data-en="Information Security, Bachelor's degree">Информационная безопасность, бакалавриат</p>
+          <p class="edu-meta" data-i18n data-ru="Ожидаемое окончание: 2029" data-en="Expected graduation: 2029">Ожидаемое окончание: 2029</p>
+        </article>
+
+        <article class="edu-item">
+          <h3 class="edu-name" data-i18n data-ru="Колледж прикладного профессионального образования ЮФУ" data-en="College of Applied Professional Education, SFedU">Колледж прикладного профессионального образования ЮФУ</h3>
+          <p class="edu-meta" data-i18n data-ru="Среднее профессиональное образование" data-en="Secondary vocational education">Среднее профессиональное образование</p>
+          <p class="edu-meta" data-i18n data-ru="Специальность: мехатроника и мобильная робототехника" data-en="Program: Mechatronics and Mobile Robotics">Специальность: мехатроника и мобильная робототехника</p>
+          <p class="edu-meta" data-i18n data-ru="Окончено в 2024" data-en="Completed in 2024">Окончено в 2024</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="languages-heading">
+      <h2 class="section-title" id="languages-heading">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7a14 14 0 0 0 0 10m6-10a14 14 0 0 1 0 10M4 12h16M6 17h12"></path></svg>
+        <span data-i18n data-ru="Языки" data-en="Languages">Языки</span>
+      </h2>
+      <ul class="language-list">
+        <li class="language-item" data-i18n data-ru="Русский — родной" data-en="Russian — Native">Русский — родной</li>
+        <li class="language-item" data-i18n data-ru="Английский — B1 (чтение технической документации)" data-en="English — B1 (technical documentation)">Английский — B1 (чтение технической документации)</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var langButtons = document.querySelectorAll("[data-lang]");
+      var i18nNodes = document.querySelectorAll("[data-i18n]");
+
+      function applyLanguage(lang) {
+        i18nNodes.forEach(function (node) {
+          var value = node.getAttribute("data-" + lang);
+          if (value !== null) {
+            node.textContent = value;
+          }
+        });
+
+        document.documentElement.lang = lang;
+
+        langButtons.forEach(function (button) {
+          var isActive = button.getAttribute("data-lang") === lang;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+
+        try {
+          localStorage.setItem("cv-language", lang);
+        } catch (error) {
+          // Ignore storage errors in restricted contexts.
+        }
+      }
+
+      langButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          applyLanguage(button.getAttribute("data-lang"));
+        });
+      });
+
+      var stored = "ru";
+      try {
+        stored = localStorage.getItem("cv-language") || "ru";
+      } catch (error) {
+        stored = "ru";
+      }
+
+      applyLanguage(stored === "en" ? "en" : "ru");
+    })();
+  </script>
+</body>
+</html>
